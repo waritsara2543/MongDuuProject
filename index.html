@@ -17,24 +17,32 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
-<body>
+<body >
     
     <ons-page>
         <ons-toolbar>
-            <div class="center"><img class="img"  src="../images/logo_MongDoo.png" alt="" >MongDuu</div>
+            <div class="center"><img class="img"  src="../images/logo_MongDoo.png" alt="" >MongDuu
+              
+              <ons-tab page="views/category.html" label="" icon="md-view-module">
+              </ons-tab>
+      
+            </div>
+            
           </ons-toolbar>
        
-        <ons-tabbar swipeable position="auto">
+        <ons-tabbar swipeable position="auto" >
           <ons-tab page="views/home(recommened).html" label="Home" icon="md-home">
+          </ons-tab>
+          <ons-tab page="views/favorite.html" label="Favorite" icon="md-favorite">
           </ons-tab>
           <ons-tab page="views/playVideo.html" label="Search" icon="md-search" >
           </ons-tab>
-          <ons-tab page="views/favorite.html" label="Favorite" icon="md-favorite">
-        </ons-tab>
         <ons-tab page="views/profile.html" label="Profile" icon="md-account-circle" >
         </ons-tab>
         </ons-tabbar>
       </ons-page>
+
+    
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
