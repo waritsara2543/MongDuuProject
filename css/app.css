@@ -1,0 +1,14 @@
+.toolbar__title{
+    background-color:#ebb617;
+    color: white;
+    font-weight: bold;
+    
+}
+.tabbar{
+    background-color: #ebb617;
+    color: white;
+}
+.img {
+    width: 30px;
+    height: auto;
+}
