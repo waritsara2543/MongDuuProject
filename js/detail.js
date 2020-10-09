@@ -16,13 +16,14 @@ $(function(){
       firebase.analytics();
     
       var db = firebase.firestore();
-      db.collection("movies").get().then((querySnapshot) => {
+      db.collection("DetailMovie").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
            var card =`<div class="card">
-           <img class="card-img-top" src="${doc.data().postURL}" alt="">
+           <img class="card-img-top" src="${doc.data().PostURL}" alt="">
            <div class="card-body">
-               <h4 class="card-title">${doc.data().title} - ${doc.data().year} </h4>
-               <p class="card-text">${doc.data().detail}</p>
+               <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+               <p class="card-text">${doc.data().Type}</p>
+               <p class="card-text">${doc.data().Detail}</p>
            </div>
        </div>`;
        $("#list").append(card);
