@@ -1,14 +1,25 @@
+.tabbar__content{
+    background-color:black;
+}
+.card{
+    background-color:black;
+}
+.display-4{
+    color:#ebb617;
+}
 .toolbar__title{
     background-color:#ebb617;
     color:whitesmoke;
     font-weight: bold;
+   
     
 }
 .tabbar{
     background-color: #ebb617;
     color: white;
+    
 }
-.img {
+.logo{
     width: 30px;
     height: auto;
 }
