@@ -1,9 +1,18 @@
+.container_display{
+    background-color:black;
+}
 .tabbar__content{
     background-color:black;
 }
 .card{
-    background-color:black;
+    background : black;
+    
 }
+.card-body{
+    background-color:black;
+    color:white;
+}
+
 .display-4{
     color:#ebb617;
 }
@@ -22,4 +31,5 @@
 .logo{
     width: 30px;
     height: auto;
+    margin-left: 5%;
 }
