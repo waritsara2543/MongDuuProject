@@ -5,7 +5,7 @@
     background-color:black;
 }
 .card{
-    background : black;
+    background-color: black;
     
 }
 .card-body{
@@ -17,7 +17,7 @@
     color:#ebb617;
 }
 .toolbar__title{
-    background-color:#ebb617;
+    
     color:whitesmoke;
     font-weight: bold;
    
@@ -32,4 +32,8 @@
     width: 30px;
     height: auto;
     margin-left: 5%;
+}
+.toolbar{
+    background-color:#ebb617;
+
 }
