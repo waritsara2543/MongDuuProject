@@ -1,13 +1,18 @@
 <ons-page id="Home">
-    <ons-toolbar>
+    <ons-navigator swipeable id="myNavigator" page="category.html"></ons-navigator>
+    <template id="category.html">
+        <ons-page id="Home">
+
+         <ons-toolbar>
         
         <div class="left">
             <img class="logo"  src="images/logo_MongDoo.png" alt="" >
-              MongDuu
+             MongDuu
         </div>
         <div class="right">
+            
             <ons-toolbar-button style="color: #0f0f0e;" id="">
-                <ons-icon page="views/category.html" label="Category" icon="md-view-module" size="25px"></ons-icon>&nbsp;<span id="count_order_list"></span>
+                <ons-icon id="category" label="category" icon="md-view-module" size="25px"></ons-icon>&nbsp;
             </ons-toolbar-button>
 
         </div>
@@ -15,4 +20,8 @@
     <div class="container_display">
     <div class="display-4">Movies</div>
     <div id="list"></div>
-</div></ons-page>
+</div>   
+        </ons-page>
+    </template>
+    </ons-page>
+
