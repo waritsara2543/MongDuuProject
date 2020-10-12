@@ -22,7 +22,11 @@ $(function(){
       querySnapshot.forEach((doc) => {
          var card =`<div class="card ">
          <img class="card-img-top" src="${doc.data().PosterURL}" alt="">
-        
+         <div class="card-body">
+  <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+  <p class="card-text">${doc.data().Type}</p>
+  <p class="card-text">${doc.data().Detail}</p>
+</div>
      </div>`;
      $("#list").append(card);
   
@@ -31,8 +35,4 @@ $(function(){
 
   })
   //ใส่คำอธิบาย
-//   <div class="card-body">
-//   <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
-//   <p class="card-text">${doc.data().Type}</p>
-//   <p class="card-text">${doc.data().Detail}</p>
-// </div>
+ 
