@@ -1,6 +1,7 @@
 
 $(function () {
   // Your web app's Firebase configuration
+
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   var firebaseConfig = {
     apiKey: "AIzaSyBfgwFZDoLIRIEIbqayesMIsk4C2BUlvvk",
@@ -31,6 +32,19 @@ $(function () {
       $("#list").append(card);
 
     });
+  });
+
+
+  var db = firebase.firestore();
+  db.collection("DetailMovie").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      var card = `
+         <div class=""><img class="card-img-top" src="${doc.data().PosterURL}" alt=""></div>
+         `;
+      $("#home").append(card);
+
+    });
+
   });
 
   db.collection("DetailMovie").get().then((querySnapshot) => {
@@ -125,7 +139,7 @@ $(function () {
       console.log("Error getting documents: ", error);
     });
 
-    db.collection("DetailMovie").where("Type", "==", "สยองขวัญ")
+  db.collection("DetailMovie").where("Type", "==", "สยองขวัญ")
     .get()
     .then(function (querySnapshot) {
       querySnapshot.forEach((doc) => {
@@ -145,7 +159,7 @@ $(function () {
     });
 
 
-    db.collection("DetailMovie").where("Type", "==", "แอคชั่น")
+  db.collection("DetailMovie").where("Type", "==", "แอคชั่น")
     .get()
     .then(function (querySnapshot) {
       querySnapshot.forEach((doc) => {
@@ -164,6 +178,5 @@ $(function () {
       console.log("Error getting documents: ", error);
     });
 
-  
+
 })
-  //ใส่คำอธิบาย
