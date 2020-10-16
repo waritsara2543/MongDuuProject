@@ -21,26 +21,21 @@
 </head>
 
 <body>
-  
+
   <ons-page>
-    
-    <ons-navigator swipeable id="myNavigator" page="category.html"></ons-navigator>
+
     <ons-toolbar>
 
       <div class="center">Detail</div>
-
+      <div class="left">
+        <ons-back-button id="back">back</ons-back-button>
+      </div>
     </ons-toolbar>
-
-
     <ons-tabbar swipeable position="auto">
-
-      <ons-tab>
-        <div class="center">
-          <ons-back-button id="back">back</ons-back-button>
-        </div>
-
+            
+      <ons-tab page="views/detail1.html" label="Home" icon="md-home, material:md-home" badge="7" active>
       </ons-tab>
-
+      
     </ons-tabbar>
 
   </ons-page>
