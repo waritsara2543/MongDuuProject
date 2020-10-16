@@ -34,18 +34,18 @@ $(function () {
     });
   });
 
-
+  // แสดงรูปหน้า home
   var db = firebase.firestore();
   db.collection("DetailMovie").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       var card = `
-         <div class=""><img class="card-img-top" src="${doc.data().PosterURL}" alt=""></div>
+         <div class=""><img class="card-img-top" src="${doc.data().PosterURL}" alt="" ></div>
          `;
       $("#home").append(card);
-
     });
 
   });
+
 
   db.collection("DetailMovie").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {

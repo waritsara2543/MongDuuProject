@@ -1,3 +1,5 @@
+
+
 $(function(){
     var firebaseConfig = {
         apiKey: "AIzaSyB_zpLZaKVozmkmP3jpDq_ho4R7ScHvVlc",
@@ -45,3 +47,4 @@ $(function(){
           
     });
 });
+
