@@ -212,7 +212,7 @@ db.collection("DetailMovie")
       </div>
        
     </div>`;
-        $("#้horror").append(card1);
+        $("#horror").append(card1);
 
       });
     })
@@ -232,7 +232,7 @@ db.collection("DetailMovie")
       </div>
        
     </div>`;
-        $("#้action").append(card1);
+        $("#action").append(card1);
 
       });
     })
