@@ -1,6 +1,16 @@
-<ons-page id="movieDetail" class="margin-start">
-  <div class="area-margin">
-      <ons-back-button class="back-button"></ons-back-button>
-  </div>
-  <div id="showMovieDetail"></div>
+<ons-page id="Home">
+  <ons-toolbar>
+
+    <div class="center">Detail</div>
+    <div class="left">
+      <ons-back-button id="back">back</ons-back-button>
+    </div>
+  </ons-toolbar>
+  <ons-navigator swipeable id="myNavigator" page="page1.html"></ons-navigator>
+  <template id="page1.html">
+    <ons-page id="Home">
+      <div id="list"></div>
+      
+    
+  </template>
 </ons-page>
