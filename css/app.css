@@ -48,4 +48,19 @@
 .color{
     background-color:#ebb617;
 }
+.category {
+    /* margin-bottom: 5%; */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.category-item {
+    /* margin-top: 20px; */
+}
+.text-center {
+    text-align: center;
+}
+.header-label {
+    padding-left: 20px;
+}
 

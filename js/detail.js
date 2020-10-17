@@ -35,16 +35,39 @@ $(function () {
   });
 
   // แสดงรูปหน้า home
-  var db = firebase.firestore();
-  db.collection("DetailMovie").get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      var card = `
-         <div class=""><img class="card-img-top" src="${doc.data().PosterURL}" alt="" ></div>
-         `;
-      $("#home").append(card);
-    });
+  var db = firebase.firestore(); 
+    db.collection("DetailMovie").where("No", "<=", 1).orderBy("No")
+        .get()
+        .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                var Result =
+                    /*html*/
+                    `<div class="">
+                        <ons-carousel-item id="${doc.data().id}">
+                            <img src="${doc.data().PosterURL}" class="" width="100%" height="90%" alt="" srcset="">
+                        </ons-carousel-item>
+                    </div>`
+                $("#home").append(Result);
+            });
+        })
+        .catch(function (error) {
+            console.log("Error getting documents: ", error);
+        });
+//10 อันดับ
+        db.collection("DetailMovie").where("No", "<=", 10).orderBy("No")
+        .get()
+        .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                var Result =
+                    /*html*/
+                    ` <div class=""><img class="card-img-top" src="${doc.data().PosterURL}" alt=""  ></div>`;
+                $("#hot").append(Result);
+            });
+        })
+        .catch(function (error) {
+            console.log("Error getting documents: ", error);
+        });
 
-  });
 
 
   db.collection("DetailMovie").get().then((querySnapshot) => {
