@@ -1,30 +1,6 @@
-<ons-page id="Home">
-
-  <ons-navigator swipeable id="myNavigator" page="page1.html"></ons-navigator>
-  <template id="page1.html">
-    <ons-page id="Home">
-
-      <ons-carousel swipeable auto-scroll id="carousel">
-        <ons-carousel-item modifier="nodivider" id="Movie1">
-          <img src="../images/สิ่งเล็กๆ(love).jpg" width="100%" height="500" />
-        </ons-carousel-item>
-        <ons-carousel-item modifier="nodivider" id="Movie2">
-          <img src="../images/Under-the-Shadow(scared).jpg" width="100%" height="500" />
-        </ons-carousel-item>
-        <ons-carousel-item modifier="nodivider" id="Movie3">
-          <img src="../images/swissarmyman(drama).jpg" width="100%" height="500" />
-        </ons-carousel-item>
-
-        
-          
-      </ons-carousel>
-      <ons-list-item>
-        <div class="center">
-          Add Favourite Movie
-        </div>
-        <div class="right">
-          <ons-switch></ons-switch>
-        </div>
-      </ons-list-item>
-  </template>
+<ons-page id="movieDetail" class="margin-start">
+  <div class="area-margin">
+      <ons-back-button class="back-button"></ons-back-button>
+  </div>
+  <div id="showMovieDetail"></div>
 </ons-page>
