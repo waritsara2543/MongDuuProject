@@ -17,12 +17,15 @@ $(function () {
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 
-
+  //แสดงทั้งหมด
   var db = firebase.firestore();
   db.collection("DetailMovie").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       var card = `<div class="card ">
-         <img class="card-img-top" src="${doc.data().PosterURL}" alt="">
+         <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto"
+                data-setup="{}">
+                <source src="${doc.data().VideoURL}" type="video/mp4" />
+            </video>
          <div class="card-body">
   <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
   <p class="card-text">${doc.data().Type}</p>
@@ -177,6 +180,254 @@ $(function () {
     .catch(function (error) {
       console.log("Error getting documents: ", error);
     });
+
+
+
+    
+//   db.collection("DetailMovie").where("Title", "==", "Love,Rosie")
+//   .get()
+//   .then(function (querySnapshot) {
+//     querySnapshot.forEach((doc) => {
+//       var card1 = `<div class="card ">
+//       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+//       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+//        <p class="card-text">${doc.data().Type}</p>
+//        <p class="card-text">${doc.data().Detail}</p>
+//     </div>
+     
+//   </div>`;
+//       $("#loveRosie").append(card1);
+
+//     });
+//   })
+//   .catch(function (error) {
+//     console.log("Error getting documents: ", error);
+//   });
+
+// db.collection("DetailMovie").where("Title", "==", "Swiss Army Man")
+//   .get()
+//   .then(function (querySnapshot) {
+//     querySnapshot.forEach((doc) => {
+//       var card1 = `<div class="card ">
+//       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+//       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+//        <p class="card-text">${doc.data().Type}</p>
+//        <p class="card-text">${doc.data().Detail}</p>
+//     </div>
+     
+//   </div>`;
+//       $("#swissarmyman").append(card1);
+
+//     });
+//   })
+//   .catch(function (error) {
+//     console.log("Error getting documents: ", error);
+//   });
+
+// db.collection("DetailMovie").where("Title", "==", "Enchanted")
+//   .get()
+//   .then(function (querySnapshot) {
+//     querySnapshot.forEach((doc) => {
+//       var card1 = `<div class="card ">
+//       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+//       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+//        <p class="card-text">${doc.data().Type}</p>
+//        <p class="card-text">${doc.data().Detail}</p>
+//     </div>
+     
+//   </div>`;
+//       $("#enchanted").append(card1);
+
+//     });
+//   })
+//   .catch(function (error) {
+//     console.log("Error getting documents: ", error);
+//   });
+
+// db.collection("DetailMovie").where("Title", "==", "สิ่งเล็กๆที่เรียกว่ารัก")
+//   .get()
+//   .then(function (querySnapshot) {
+//     querySnapshot.forEach((doc) => {
+//       var card1 = `<div class="card ">
+//       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+//       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+//        <p class="card-text">${doc.data().Type}</p>
+//        <p class="card-text">${doc.data().Detail}</p>
+//     </div>
+     
+//   </div>`;
+//       $("#สิ่งเล็กๆที่เรียกว่ารัก").append(card1);
+
+//     });
+//   })
+//   .catch(function (error) {
+//     console.log("Error getting documents: ", error);
+//   });
+
+// db.collection("DetailMovie").where("Title", "==", "Under The Shadow")
+//   .get()
+//   .then(function (querySnapshot) {
+//     querySnapshot.forEach((doc) => {
+//       var card1 = `<div class="card ">
+//       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+//       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+//        <p class="card-text">${doc.data().Type}</p>
+//        <p class="card-text">${doc.data().Detail}</p>
+//     </div>
+     
+//   </div>`;
+//       $("#undertheshadow").append(card1);
+
+//     });
+//   })
+//   .catch(function (error) {
+//     console.log("Error getting documents: ", error);
+//   });
+
+
+// db.collection("DetailMovie").where("Title", "==", "Apostle")
+//   .get()
+//   .then(function (querySnapshot) {
+//     querySnapshot.forEach((doc) => {
+//       var card1 = `<div class="card ">
+//       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+//       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+//        <p class="card-text">${doc.data().Type}</p>
+//        <p class="card-text">${doc.data().Detail}</p>
+//     </div>
+     
+//   </div>`;
+//       $("#apostle").append(card1);
+
+//     });
+//   })
+//   .catch(function (error) {
+//     console.log("Error getting documents: ", error);
+//   });
+
+
+//   db.collection("DetailMovie").where("Title", "==", "Harry Potter")
+//   .get()
+//   .then(function (querySnapshot) {
+//     querySnapshot.forEach((doc) => {
+//       var card1 = `<div class="card ">
+//       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+//       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+//        <p class="card-text">${doc.data().Type}</p>
+//        <p class="card-text">${doc.data().Detail}</p>
+//     </div>
+     
+//   </div>`;
+//       $("#harrypotter").append(card1);
+
+//     });
+//   })
+//   .catch(function (error) {
+//     console.log("Error getting documents: ", error);
+//   });
+
+// db.collection("DetailMovie").where("Title", "==", "Her")
+//   .get()
+//   .then(function (querySnapshot) {
+//     querySnapshot.forEach((doc) => {
+//       var card1 = `<div class="card ">
+//       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+//       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+//        <p class="card-text">${doc.data().Type}</p>
+//        <p class="card-text">${doc.data().Detail}</p>
+//     </div>
+     
+//   </div>`;
+//       $("#her").append(card1);
+
+//     });
+//   })
+//   .catch(function (error) {
+//     console.log("Error getting documents: ", error);
+//   });
+
+// db.collection("DetailMovie").where("Title", "==", "Birdman")
+//   .get()
+//   .then(function (querySnapshot) {
+//     querySnapshot.forEach((doc) => {
+//       var card1 = `<div class="card ">
+//       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+//       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+//        <p class="card-text">${doc.data().Type}</p>
+//        <p class="card-text">${doc.data().Detail}</p>
+//     </div>
+     
+//   </div>`;
+//       $("#birdman").append(card1);
+
+//     });
+//   })
+//   .catch(function (error) {
+//     console.log("Error getting documents: ", error);
+//   });
+
+// db.collection("DetailMovie").where("Title", "==", "Edge of Tomorrow")
+//   .get()
+//   .then(function (querySnapshot) {
+//     querySnapshot.forEach((doc) => {
+//       var card1 = `<div class="card ">
+//       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+//       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+//        <p class="card-text">${doc.data().Type}</p>
+//        <p class="card-text">${doc.data().Detail}</p>
+//     </div>
+     
+//   </div>`;
+//       $("#edgeoftomorrow").append(card1);
+
+//     });
+//   })
+//   .catch(function (error) {
+//     console.log("Error getting documents: ", error);
+//   });
+
+// db.collection("DetailMovie").where("Title", "==", "Snow White And The Huntsman ")
+//   .get()
+//   .then(function (querySnapshot) {
+//     querySnapshot.forEach((doc) => {
+//       var card1 = `<div class="card ">
+//       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+//       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+//        <p class="card-text">${doc.data().Type}</p>
+//        <p class="card-text">${doc.data().Detail}</p>
+//     </div>
+     
+//   </div>`;
+//       $("#snowwhite").append(card1);
+
+//     });
+//   })
+//   .catch(function (error) {
+//     console.log("Error getting documents: ", error);
+//   });
+
+
+// db.collection("DetailMovie").where("Title", "==", "Baby Driver")
+//   .get()
+//   .then(function (querySnapshot) {
+//     querySnapshot.forEach((doc) => {
+//       var card1 = `<div class="card ">
+//       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+//       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+//        <p class="card-text">${doc.data().Type}</p>
+//        <p class="card-text">${doc.data().Detail}</p>
+//     </div>
+     
+//   </div>`;
+//       $("#babydriver").append(card1);
+
+//     });
+//   })
+//   .catch(function (error) {
+//     console.log("Error getting documents: ", error);
+//   });
+
+
 
 
 })
