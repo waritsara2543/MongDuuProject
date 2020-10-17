@@ -43,10 +43,8 @@ $(function () {
             querySnapshot.forEach(function (doc) {
                 const Result =
                     /*html*/
-                    `<div class="">
-                        <ons-carousel-item id="${doc.data().No}">
-                            <img src="${doc.data().PosterURL}" class="" width="100%" height="90%" alt="" srcset="">
-                        </ons-carousel-item>
+                    `<div id="${doc.data().No}">
+                            <img src="${doc.data().PosterURL}" class="" width="100%" height="90%" alt="">
                     </div>`
                 $("#home").append(Result);
             });
@@ -54,9 +52,10 @@ $(function () {
         .catch(function (error) {
             console.log("Error getting documents: ", error);
         });
+        
 //ดูล่าสุด
 db.collection("DetailMovie")
-.where("view", "<=", 1)
+.where("view", "<=", 5)
 .orderBy("view")
 .get()
 .then(function (querySnapshot) {
