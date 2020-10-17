@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Firebase</title>
+    <title>MongDuu</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,30 +13,30 @@
   
   
 
-   <div  class="container"  >
-    <div class="center"><center><img class="img" width="35%" src="../images/logo_MongDoo.png" alt="" ></center></div>
+   <div  class="container" >
+    <div class="row justify-center"><img style="width: 30%" src="../images/logo_MongDoo.png" style="margin-top:50px"></div>
        <div class="display-4">Sign in </div>
        <p class="text-center">
        <div class="form-group">
-         <label for="">Email</label>
-         <input type="email" class="form-control" name="" id="email" aria-describedby="emailHelpId" placeholder="">
-         <small id="emailHelpId" class="form-text text-muted">Email to sign in</small>
+         <input type="email" class="form-control form-control-lg"  id="email" placeholder="Email">
        </div>
        </p>
        <p class="text-center">
        <div class="form-group">
-         <label for="">Password</label>
-         <input type="password" class="form-control" name="" id="password" placeholder="">
+         
+         <input type="password" class="form-control form-control-lg" name="" id="password" placeholder="Password">
        </div>
         </p>
         <p class="text-center">
-            <button type="button" class="btn-btn-primary" id="signinemail">Sign in </button>
-            </p>
+            <button type="button"  class="btn btn-dark  btn-block control-sm" id="signinemail">Sign in </button>
+         </p>   
         <p class="text-center">
-            <button type="button" class="btn-btn-danger" id="signingoogle">Sign in with google</button>
+            <button type="button" class="btn btn-dark  btn-block control-sm" id="signingoogle">Sign in with google</button>
             </p>
-            <p class="text-center">
-                <h3 id="errormessage"></h3>
+            <p >
+              <div class="alert alert-danger">
+                <span id="error"></span>
+              </div>
             </p>
    </div>
 
@@ -57,9 +57,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
     <script src="js/signin.js"></script>
-    <script src="js/index.js"></script>
    
   </body>
 </html>
-
 
