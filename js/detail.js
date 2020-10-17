@@ -38,31 +38,93 @@ $(function () {
   });
 
   // แสดงรูปหน้า home
-  var db = firebase.firestore();
-  db.collection("DetailMovie").get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      var card = `
-         <div class=""><img class="card-img-top" src="${doc.data().PosterURL}" alt="" ></div>
-         `;
-      $("#home").append(card);
-    });
-
+  var db = firebase.firestore(); 
+  
+    db.collection("DetailMovie").where("No", "<=", 1).orderBy("No")
+        .get()
+        .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                const Result =
+                    /*html*/
+                    `<div class="">
+                        <ons-carousel-item id="${doc.data().No}">
+                            <img src="${doc.data().PosterURL}" class="" width="100%" height="90%" alt="" srcset="">
+                        </ons-carousel-item>
+                    </div>`
+                $("#home").append(Result);
+            });
+        })
+        .catch(function (error) {
+            console.log("Error getting documents: ", error);
+        });
+//ดูล่าสุด
+db.collection("DetailMovie")
+.where("view", "<=", 1)
+.orderBy("view")
+.get()
+.then(function (querySnapshot) {
+  $('#carousel').empty();
+  querySnapshot.forEach(function (doc) {
+    var Result =
+      `<ons-col id="${doc.data().view}" style="margin-right:110px; margin-left:2px" width="20" height="250"><img class="" src="${doc.data().PosterURL}" alt="" width="170" height="240vh" ></ons-icon></ons-col>
+      `;
+    $("#viewed").append(Result);
   });
+})
+.catch(function (error) {
+  console.log("Error getting documents: ", error);
+});
+//10 อันดับ
+       db.collection("DetailMovie")
+    .where("No", "<=", 10)
+    .orderBy("No")
+    .get()
+    .then(function (querySnapshot) {
+      $('#carousel').empty();
+      querySnapshot.forEach(function (doc) {
+        var Result =
+          `<ons-col style="margin-right:110px; margin-left:2px" width="20" height="250"><img class="" src="${doc.data().PosterURL}" alt="" width="170" height="240vh" ></ons-icon></ons-col>
+          `;
+        $("#hot").append(Result);
+      });
+    })
+    .catch(function (error) {
+      console.log("Error getting documents: ", error);
+    });
+//for you
+db.collection("DetailMovie")
+.where("rating", "<=", 7)
+.orderBy("rating")
+.get()
+.then(function (querySnapshot) {
+  $('#carousel').empty();
+  querySnapshot.forEach(function (doc) {
+    var Result =
+      `<ons-col style="margin-right:110px; margin-left:2px" width="20" height="250"><img class="" src="${doc.data().PosterURL}" alt="" width="170" height="240vh" ></ons-icon></ons-col>
+      `;
+    $("#ForYou").append(Result);
+  });
+})
+.catch(function (error) {
+  console.log("Error getting documents: ", error);
+});
 
 
-  db.collection("DetailMovie").get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      var card = `<div class="card ">
-       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
-       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
-       <p class="card-text">${doc.data().Type}</p>
-     </div>
+
+
+  // db.collection("DetailMovie").get().then((querySnapshot) => {
+  //   querySnapshot.forEach((doc) => {
+  //     var card = `<div class="card ">
+  //      <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+  //      <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+  //      <p class="card-text">${doc.data().Type}</p>
+  //    </div>
       
-   </div>`;
-      $("#allcategory").append(card);
+  //  </div>`;
+  //     $("#allcategory").append(card);
 
-    });
-  });
+  //   });
+  // });
 
 
 
@@ -78,6 +140,7 @@ $(function () {
        
     </div>`;
         $("#romantic").append(card1);
+        $("#romantic1").append(card1);
 
       });
     })
@@ -97,6 +160,7 @@ $(function () {
        
     </div>`;
         $("#comedy").append(card1);
+        $("#comedy1").append(card1);
 
       });
     })
@@ -116,6 +180,7 @@ $(function () {
        
     </div>`;
         $("#fantasy").append(card1);
+        $("#fantasy1").append(card1);
 
       });
     })
@@ -135,6 +200,7 @@ $(function () {
        
     </div>`;
         $("#drama").append(card1);
+        $("#drama1").append(card1);
 
       });
     })
@@ -153,7 +219,8 @@ $(function () {
       </div>
        
     </div>`;
-        $("#้horror").append(card1);
+        $("#horror").append(card1);
+        $("#horror1").append(card1);
 
       });
     })
@@ -173,7 +240,8 @@ $(function () {
       </div>
        
     </div>`;
-        $("#้action").append(card1);
+        $("#action").append(card1);
+        $("#action1").append(card1);
 
       });
     })
@@ -431,3 +499,4 @@ $(function () {
 
 
 })
+
