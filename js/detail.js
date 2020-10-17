@@ -109,19 +109,19 @@ db.collection("DetailMovie")
 
 
 
-  db.collection("DetailMovie").get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      var card = `<div class="card ">
-       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
-       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
-       <p class="card-text">${doc.data().Type}</p>
-     </div>
+  // db.collection("DetailMovie").get().then((querySnapshot) => {
+  //   querySnapshot.forEach((doc) => {
+  //     var card = `<div class="card ">
+  //      <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+  //      <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+  //      <p class="card-text">${doc.data().Type}</p>
+  //    </div>
       
-   </div>`;
-      $("#allcategory").append(card);
+  //  </div>`;
+  //     $("#allcategory").append(card);
 
-    });
-  });
+  //   });
+  // });
 
 
 
@@ -137,6 +137,7 @@ db.collection("DetailMovie")
        
     </div>`;
         $("#romantic").append(card1);
+        $("#romantic1").append(card1);
 
       });
     })
@@ -156,6 +157,7 @@ db.collection("DetailMovie")
        
     </div>`;
         $("#comedy").append(card1);
+        $("#comedy1").append(card1);
 
       });
     })
@@ -175,6 +177,7 @@ db.collection("DetailMovie")
        
     </div>`;
         $("#fantasy").append(card1);
+        $("#fantasy1").append(card1);
 
       });
     })
@@ -194,6 +197,7 @@ db.collection("DetailMovie")
        
     </div>`;
         $("#drama").append(card1);
+        $("#drama1").append(card1);
 
       });
     })
@@ -213,6 +217,7 @@ db.collection("DetailMovie")
        
     </div>`;
         $("#horror").append(card1);
+        $("#horror1").append(card1);
 
       });
     })
@@ -233,6 +238,7 @@ db.collection("DetailMovie")
        
     </div>`;
         $("#action").append(card1);
+        $("#action1").append(card1);
 
       });
     })
