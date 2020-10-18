@@ -172,6 +172,8 @@ $(function () {
     }
   });
 
+  
+
 
 
 })
@@ -191,14 +193,24 @@ function openPlaylist(id) {
         const Result =
           /*html*/
           `
+          
         <div class="card">
-                      <ons-carousel-item >
-                          <img src="${doc.data().PosterURL}" class="card-img-top" width="100%" height="90%" alt="" srcset="" id="${doc.data().No}" >
-                      </ons-carousel-item>
+                      <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto"
+                data-setup="{}">
+                <source src="${doc.data().VideoURL}" type="video/mp4" />
+            </video>
                   
                   <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
                          <p class="card-text">${doc.data().Type}</p>
-                         <p class="card-text">${doc.data().Detail}</p></div>`
+                         <p class="card-text">${doc.data().Detail}</p></div>
+                         <ons-row class="text-center" style="margin-top: 10px;">
+        <ons-col class="category-item" width="100%">
+        <ons-icon  id="like${doc.data().No}" label="Favorite"  size="25px" icon="md-favorite" onclick="setColor('like${doc.data().No}', '#101010')"></ons-icon>
+        <p class="category-item" width="36%" > <b>Favorite</b> </p>
+        </ons-col>
+        
+      </ons-row>
+                         `
 
         $("#show").append(Result);
 
@@ -217,7 +229,7 @@ function openPlaylist1(id) {
   var db = firebase.firestore();
 
 
-  document.querySelector('#myNavigator1').pushPage('views/detail1.html');
+  document.querySelector('#myNavigator1').pushPage('views/detail2.html');
   console.log(id);
 
   db.collection("DetailMovie").where("No", "==", id)
@@ -227,16 +239,24 @@ function openPlaylist1(id) {
         const Result =
           /*html*/
           `
-        <div class="card">
-                      <ons-carousel-item >
-                          <img src="${doc.data().PosterURL}" class="card-img-top" width="100%" height="90%" alt="" srcset="" id="${doc.data().No}" >
-                      </ons-carousel-item>
-                  
-                  <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
-                         <p class="card-text">${doc.data().Type}</p>
-                         <p class="card-text">${doc.data().Detail}</p></div>`
+          <div class="card">
+          <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto"
+    data-setup="{}">
+    <source src="${doc.data().VideoURL}" type="video/mp4" />
+</video>
+      
+      <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+             <p class="card-text">${doc.data().Type}</p>
+             <p class="card-text">${doc.data().Detail}</p></div>
+             <ons-row class="text-center" style="margin-top: 10px;">
+<ons-col class="category-item" width="100%">
+<ons-icon  id="like${doc.data().No}" label="Favorite"  size="25px" icon="md-favorite" onclick="setColor('like${doc.data().No}', '#101010')"></ons-icon>
+<p class="category-item" width="36%" > <b>Favorite</b> </p>
+</ons-col>
 
-        $("#show").append(Result);
+</ons-row>`
+
+        $("#show1").append(Result);
 
       });
     })
