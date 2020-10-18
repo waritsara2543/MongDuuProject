@@ -245,7 +245,7 @@ function openPlaylist(id) {
           `
           
         <div class="card">
-                      <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto"
+                      <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto" style ="width: 100%; height: auto;"
                 data-setup="{}">
                 <source src="${doc.data().VideoURL}" type="video/mp4" />
             </video>
@@ -290,7 +290,7 @@ function openPlaylist1(id) {
           /*html*/
           `
           <div class="card">
-          <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto"
+          <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto" style ="width: 100%; height: auto;"
     data-setup="{}">
     <source src="${doc.data().VideoURL}" type="video/mp4" />
 </video>
@@ -328,7 +328,7 @@ function openPlaylist2(id) {
           /*html*/
           `
           <div class="card">
-          <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto"
+          <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto" style ="width: 100%; height: auto;"
     data-setup="{}">
     <source src="${doc.data().VideoURL}" type="video/mp4" />
 </video>
@@ -365,7 +365,7 @@ function openPlaylist3(id) {
           /*html*/
           `
           <div class="card">
-          <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto"
+          <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto" style ="width: 100%; height: auto;"
     data-setup="{}">
     <source src="${doc.data().VideoURL}" type="video/mp4" />
 </video>
