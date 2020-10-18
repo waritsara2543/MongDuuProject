@@ -17,12 +17,15 @@ $(function () {
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 
-
+  //แสดงทั้งหมด
   var db = firebase.firestore();
   db.collection("DetailMovie").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       var card = `<div class="card ">
-         <img class="card-img-top" src="${doc.data().PosterURL}" alt="">
+         <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto"
+                data-setup="{}">
+                <source src="${doc.data().VideoURL}" type="video/mp4" />
+            </video>
          <div class="card-body">
   <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
   <p class="card-text">${doc.data().Type}</p>
@@ -35,6 +38,7 @@ $(function () {
   });
 
   // แสดงรูปหน้า home
+<<<<<<< HEAD
   var db = firebase.firestore();
 
   db.collection("DetailMovie").where("No", "<=", 1).orderBy("No")
@@ -64,6 +68,36 @@ $(function () {
       querySnapshot.forEach(function (doc) {
         var Result =
           `<ons-col id="${doc.data().view}" style="margin-right:110px; margin-left:2px" width="20" height="250"><img class="" src="${doc.data().PosterURL}" alt="" width="170" height="240vh" ></ons-icon></ons-col>
+=======
+  var db = firebase.firestore(); 
+  
+    db.collection("DetailMovie").where("No", "<=", 1).orderBy("No")
+        .get()
+        .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                const Result =
+                    /*html*/
+                    `<div id="${doc.data().No}">
+                            <img src="${doc.data().PosterURL}" class="" width="100%" height="90%" alt="">
+                    </div>`
+                $("#home").append(Result);
+            });
+        })
+        .catch(function (error) {
+            console.log("Error getting documents: ", error);
+        });
+        
+//ดูล่าสุด
+db.collection("DetailMovie")
+.where("view", "<=", 5)
+.orderBy("view")
+.get()
+.then(function (querySnapshot) {
+  $('#carousel').empty();
+  querySnapshot.forEach(function (doc) {
+    var Result =
+      `<ons-col id="${doc.data().view}" style="margin-right:110px; margin-left:2px" width="20" height="250"><img class="" src="${doc.data().PosterURL}" alt="" width="170" height="240vh" ></ons-icon></ons-col>
+>>>>>>> 878a7e68c29ebca8e330203dfca393040e6eefe9
       `;
         $("#viewed").append(Result);
       });
@@ -122,6 +156,7 @@ $(function () {
 
   //   });
   // });
+<<<<<<< HEAD
 
   document.addEventListener('init', function (event) {
     var page = event.target;
@@ -154,6 +189,21 @@ $(function () {
       })
     }
   });
+=======
+  document.addEventListener('postchange', function (event) {
+    console.log('postchange event', event);
+  });
+  function changeTab() {
+    document.getElementById('tabbar').setActiveTab(1);
+  }
+  function changeButton() {
+    document.getElementById('segment').setActiveButton(1);
+  }
+  function logIndexes() {
+    console.log('active button index', document.getElementById('segment').getActiveButtonIndex());
+    console.log('active tab index', document.getElementById('tabbar').getActiveTabIndex());
+  }
+>>>>>>> 878a7e68c29ebca8e330203dfca393040e6eefe9
 
   // db.collection("DetailMovie").where("Type", "==", "คอมเมดี้")
   //   .get()
@@ -256,5 +306,29 @@ $(function () {
   //     console.log("Error getting documents: ", error);
   //   });
 
+<<<<<<< HEAD
+=======
+
+    
+
+
+
+
+
+})
+function setColor(btn, color){
+  var count=1;
+  var property = document.getElementById(btn);
+  if (count == 0){
+      property.style.color = "#FFFFFF"
+      count=1;        
+  }
+  else{
+      property.style.color = "#ebb617"
+      count=0;
+  }
+
+}
+>>>>>>> 878a7e68c29ebca8e330203dfca393040e6eefe9
 
 })
