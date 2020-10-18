@@ -56,7 +56,7 @@ $(function () {
     });
   //ดูล่าสุด
   db.collection("DetailMovie")
-    .where("view", "<=", 1)
+    .where("view", "<=", 12)
     .orderBy("view")
     .get()
     .then(function (querySnapshot) {
