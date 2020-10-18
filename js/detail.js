@@ -44,8 +44,8 @@ $(function () {
         const Result =
           /*html*/
           `<div class="">
-                        <ons-carousel-item id="${doc.data().No}">
-                            <img src="${doc.data().PosterURL}" class="" width="100%" height="90%" alt="" srcset="">
+                        <ons-carousel-item >
+                            <img src="${doc.data().PosterURL}" class="" width="100%" height="90%" alt="" srcset="" id="${doc.data().No}" onclick="openPlaylist(${doc.data().No})">
                         </ons-carousel-item>
                     </div>`
         $("#home").append(Result);
@@ -56,14 +56,16 @@ $(function () {
     });
   //ดูล่าสุด
   db.collection("DetailMovie")
-    .where("view", "<=", 1)
+    .where("view", "<=", 12)
     .orderBy("view")
     .get()
     .then(function (querySnapshot) {
       $('#carousel').empty();
       querySnapshot.forEach(function (doc) {
-        var Result =
-          `<ons-col id="${doc.data().view}" style="margin-right:110px; margin-left:2px" width="20" height="250"><img class="" src="${doc.data().PosterURL}" alt="" width="170" height="240vh" ></ons-icon></ons-col>
+        const Result =
+          `<ons-col id="${doc.data().view}" style="margin-right:110px; margin-left:2px" width="20" height="250">
+          <img class=""  src="${doc.data().PosterURL}" alt="" width="170" height="240vh" id="${doc.data().No}" onclick="openPlaylist(${doc.data().No})">
+          </ons-col>
       `;
         $("#viewed").append(Result);
       });
@@ -80,7 +82,9 @@ $(function () {
       $('#carousel').empty();
       querySnapshot.forEach(function (doc) {
         var Result =
-          `<ons-col style="margin-right:110px; margin-left:2px" width="20" height="250"><img class="" src="${doc.data().PosterURL}" alt="" width="170" height="240vh" ></ons-icon></ons-col>
+          `<ons-col style="margin-right:110px; margin-left:2px" width="20" height="250">
+          <img class="" src="${doc.data().PosterURL}" alt="" width="170" height="240vh" id="${doc.data().No}" onclick="openPlaylist(${doc.data().No})">
+          </ons-col>
           `;
         $("#hot").append(Result);
       });
@@ -97,7 +101,9 @@ $(function () {
       $('#carousel').empty();
       querySnapshot.forEach(function (doc) {
         var Result =
-          `<ons-col style="margin-right:110px; margin-left:2px" width="20" height="250"><img class="" src="${doc.data().PosterURL}" alt="" width="170" height="240vh" ></ons-icon></ons-col>
+          `<ons-col style="margin-right:110px; margin-left:2px" width="20" height="250">
+          <img class="" src="${doc.data().PosterURL}" alt="" width="170" height="240vh" id="${doc.data().No}" onclick="openPlaylist(${doc.data().No})">
+          </ons-col>
       `;
         $("#ForYou").append(Result);
       });
@@ -109,7 +115,7 @@ $(function () {
 
 
 
-  
+
 
   document.addEventListener('init', function (event) {
     var page = event.target;
@@ -119,30 +125,135 @@ $(function () {
         $("#showmovieCategory").empty();
         db.collection("DetailMovie").get().then(function (querySnapshot) {
           querySnapshot.forEach((doc) => {
-            if(id === 'ทุกประเภท'){
+            if (id === 'ทุกประเภท') {
               var card1 = `<div class="card ">
-                            <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+                            <img class="card-img-top" src="${doc.data().PosterURL}" alt="" id="${doc.data().No}" onclick="openPlaylist1(${doc.data().No})">
+                             <div class="card-body">
                             <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
                             <p class="card-text">${doc.data().Type}</p>
                         </div>`;
-            $("#showmovieCategory").append(card1);
-            }else if(doc.data().Type === id){
+              $("#showmovieCategory").append(card1);
+            } else if (doc.data().Type === id) {
               var card1 = `<div class="card ">
-                            <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+                            <img class="card-img-top" src="${doc.data().PosterURL}" alt="" id="${doc.data().No}" onclick="openPlaylist1(${doc.data().No})">
+                             <div class="card-body">
                             <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
                             <p class="card-text">${doc.data().Type}</p>
                         </div>`;
-            $("#showmovieCategory").append(card1);
+              $("#showmovieCategory").append(card1);
             }
           });
         })
-        .catch(function (error) {
-          console.log("Error getting documents: ", error);
-        });
+          .catch(function (error) {
+            console.log("Error getting documents: ", error);
+          });
       })
     }
   });
 
-  
+  document.addEventListener('init', function (event) {
+    var page = event.target;
+    console.log(page.id);
+
+    if (page.id === 'detail') {
+      page.querySelector('#back_button').onclick = function () {
+        document.querySelector('#myNavigator').popPage();
+
+      };
+
+
+    }
+    if (page.id === 'detail1') {
+      page.querySelector('#back_button').onclick = function () {
+        document.querySelector('#myNavigator1').popPage();
+      };
+
+
+    }
+  });
+
+
 
 })
+//pushpage
+function openPlaylist(id) {
+
+  var db = firebase.firestore();
+
+  document.querySelector('#myNavigator').pushPage('views/detail1.html');
+
+  console.log(id);
+
+  db.collection("DetailMovie").where("No", "==", id)
+    .get()
+    .then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        const Result =
+          /*html*/
+          `
+        <div class="card">
+                      <ons-carousel-item >
+                          <img src="${doc.data().PosterURL}" class="card-img-top" width="100%" height="90%" alt="" srcset="" id="${doc.data().No}" >
+                      </ons-carousel-item>
+                  
+                  <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+                         <p class="card-text">${doc.data().Type}</p>
+                         <p class="card-text">${doc.data().Detail}</p></div>`
+
+        $("#show").append(Result);
+
+      });
+    })
+
+
+
+
+
+
+
+}
+function openPlaylist1(id) {
+
+  var db = firebase.firestore();
+
+
+  document.querySelector('#myNavigator1').pushPage('views/detail1.html');
+  console.log(id);
+
+  db.collection("DetailMovie").where("No", "==", id)
+    .get()
+    .then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        const Result =
+          /*html*/
+          `
+        <div class="card">
+                      <ons-carousel-item >
+                          <img src="${doc.data().PosterURL}" class="card-img-top" width="100%" height="90%" alt="" srcset="" id="${doc.data().No}" >
+                      </ons-carousel-item>
+                  
+                  <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+                         <p class="card-text">${doc.data().Type}</p>
+                         <p class="card-text">${doc.data().Detail}</p></div>`
+
+        $("#show").append(Result);
+
+      });
+    })
+}
+
+
+
+function setColor(btn, color) {
+  var count = 1;
+  var property = document.getElementById(btn);
+  if (count == 0) {
+    property.style.color = "#FFFFFF"
+    count = 1;
+  }
+  else {
+    property.style.color = "#ebb617"
+    count = 0;
+  }
+
+}
