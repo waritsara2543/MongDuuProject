@@ -44,8 +44,8 @@ $(function () {
         const Result =
           /*html*/
           `<div class="">
-                        <ons-carousel-item id="${doc.data().No}">
-                            <img src="${doc.data().PosterURL}" class="" width="100%" height="90%" alt="" srcset="">
+                        <ons-carousel-item >
+                            <img src="${doc.data().PosterURL}" class="" width="100%" height="90%" alt="" srcset="" id="${doc.data().No}" onclick="openPlaylist(${doc.data().No})">
                         </ons-carousel-item>
                     </div>`
         $("#home").append(Result);
@@ -62,8 +62,10 @@ $(function () {
     .then(function (querySnapshot) {
       $('#carousel').empty();
       querySnapshot.forEach(function (doc) {
-        var Result =
-          `<ons-col id="${doc.data().view}" style="margin-right:110px; margin-left:2px" width="20" height="250"><img class="" src="${doc.data().PosterURL}" alt="" width="170" height="240vh" ></ons-icon></ons-col>
+        const Result =
+          `<ons-col id="${doc.data().view}" style="margin-right:110px; margin-left:2px" width="20" height="250">
+          <img class=""  src="${doc.data().PosterURL}" alt="" width="170" height="240vh" id="${doc.data().No}" onclick="openPlaylist(${doc.data().No})">
+          </ons-col>
       `;
         $("#viewed").append(Result);
       });
@@ -80,7 +82,9 @@ $(function () {
       $('#carousel').empty();
       querySnapshot.forEach(function (doc) {
         var Result =
-          `<ons-col style="margin-right:110px; margin-left:2px" width="20" height="250"><img class="" src="${doc.data().PosterURL}" alt="" width="170" height="240vh" ></ons-icon></ons-col>
+          `<ons-col style="margin-right:110px; margin-left:2px" width="20" height="250">
+          <img class="" src="${doc.data().PosterURL}" alt="" width="170" height="240vh" id="${doc.data().No}" onclick="openPlaylist(${doc.data().No})">
+          </ons-col>
           `;
         $("#hot").append(Result);
       });
@@ -97,7 +101,9 @@ $(function () {
       $('#carousel').empty();
       querySnapshot.forEach(function (doc) {
         var Result =
-          `<ons-col style="margin-right:110px; margin-left:2px" width="20" height="250"><img class="" src="${doc.data().PosterURL}" alt="" width="170" height="240vh" ></ons-icon></ons-col>
+          `<ons-col style="margin-right:110px; margin-left:2px" width="20" height="250">
+          <img class="" src="${doc.data().PosterURL}" alt="" width="170" height="240vh" id="${doc.data().No}" onclick="openPlaylist(${doc.data().No})">
+          </ons-col>
       `;
         $("#ForYou").append(Result);
       });
@@ -119,26 +125,28 @@ $(function () {
         $("#showmovieCategory").empty();
         db.collection("DetailMovie").get().then(function (querySnapshot) {
           querySnapshot.forEach((doc) => {
-            if(id === 'ทุกประเภท'){
+            if (id === 'ทุกประเภท') {
               var card1 = `<div class="card ">
-                            <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+                            <img class="card-img-top" src="${doc.data().PosterURL}" alt="" id="${doc.data().No}" onclick="openPlaylist1(${doc.data().No})">
+                             <div class="card-body">
                             <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
                             <p class="card-text">${doc.data().Type}</p>
                         </div>`;
-            $("#showmovieCategory").append(card1);
-            }else if(doc.data().Type === id){
+              $("#showmovieCategory").append(card1);
+            } else if (doc.data().Type === id) {
               var card1 = `<div class="card ">
-                            <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+                            <img class="card-img-top" src="${doc.data().PosterURL}" alt="" id="${doc.data().No}" onclick="openPlaylist1(${doc.data().No})">
+                             <div class="card-body">
                             <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
                             <p class="card-text">${doc.data().Type}</p>
                         </div>`;
-            $("#showmovieCategory").append(card1);
+              $("#showmovieCategory").append(card1);
             }
           });
         })
-        .catch(function (error) {
-          console.log("Error getting documents: ", error);
-        });
+          .catch(function (error) {
+            console.log("Error getting documents: ", error);
+          });
       })
     }
   });
