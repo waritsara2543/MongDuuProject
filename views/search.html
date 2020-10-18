@@ -1,11 +1,13 @@
 <ons-page id="search">
-    
+    <ons-navigator swipeable id="myNavigator2" page="search.html"></ons-navigator>
+    <template id="search.html">
+        <ons-page id="search">
     <ons-row class="d-flex align-items-center searchbar">
         <div class="col-11">
             <input style="border-radius: 10px; text-align: center;" type="text" class="form-control" placeholder="Search"
-                id="searchResult" onchange="getmoviefromSearch()">
+                id="searchResult" >
         </div>
-        <ons-icon size="30px" icon="md-search" onchange="getmoviefromSearch()"></ons-icon>
+        <ons-icon size="30px" icon="md-search" onclick="getmoviefromSearch()"></ons-icon>
     </ons-row>
 
     <ons-row id="testest" class="d-flex justify-content-center">
@@ -20,4 +22,7 @@
        
     </ons-row>
     <div id="showmovieSearch"></div>
+    <div id="showItemFromSearch"></div>
+</ons-page>
+    </template>
 </ons-page>

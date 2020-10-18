@@ -1,14 +1,27 @@
 $(function(){
   
+  // var firebaseConfig = {
+  //   apiKey: "AIzaSyBfgwFZDoLIRIEIbqayesMIsk4C2BUlvvk",
+  //   authDomain: "mongduu-cae06.firebaseapp.com",
+  //   databaseURL: "https://mongduu-cae06.firebaseio.com",
+  //   projectId: "mongduu-cae06",
+  //   storageBucket: "mongduu-cae06.appspot.com",
+  //   messagingSenderId: "19158763880",
+  //   appId: "1:19158763880:web:1ba86090c57aa8edd5aedd",
+  //   measurementId: "G-D1SS39EJBZ"
+  // };
+  // Initialize Firebase
+  // firebase.initializeApp(firebaseConfig);
+  // firebase.analytics();
   var firebaseConfig = {
-    apiKey: "AIzaSyBfgwFZDoLIRIEIbqayesMIsk4C2BUlvvk",
-    authDomain: "mongduu-cae06.firebaseapp.com",
-    databaseURL: "https://mongduu-cae06.firebaseio.com",
-    projectId: "mongduu-cae06",
-    storageBucket: "mongduu-cae06.appspot.com",
-    messagingSenderId: "19158763880",
-    appId: "1:19158763880:web:1ba86090c57aa8edd5aedd",
-    measurementId: "G-D1SS39EJBZ"
+    apiKey: "AIzaSyB_zpLZaKVozmkmP3jpDq_ho4R7ScHvVlc",
+    authDomain: "psu1-80756.firebaseapp.com",
+    databaseURL: "https://psu1-80756.firebaseio.com",
+    projectId: "psu1-80756",
+    storageBucket: "psu1-80756.appspot.com",
+    messagingSenderId: "508447784420",
+    appId: "1:508447784420:web:3e7b55a6df7436fa235bf1",
+    measurementId: "G-2JDTBKQMDS"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
