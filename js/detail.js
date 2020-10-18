@@ -17,15 +17,12 @@ $(function () {
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 
-  //แสดงทั้งหมด
+
   var db = firebase.firestore();
   db.collection("DetailMovie").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       var card = `<div class="card ">
-         <video id="my-video" class="video-js" controls preload="auto" autoplay preload="auto"
-                data-setup="{}">
-                <source src="${doc.data().VideoURL}" type="video/mp4" />
-            </video>
+         <img class="card-img-top" src="${doc.data().PosterURL}" alt="">
          <div class="card-body">
   <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
   <p class="card-text">${doc.data().Type}</p>
@@ -38,7 +35,6 @@ $(function () {
   });
 
   // แสดงรูปหน้า home
-<<<<<<< HEAD
   var db = firebase.firestore();
 
   db.collection("DetailMovie").where("No", "<=", 1).orderBy("No")
@@ -68,36 +64,6 @@ $(function () {
       querySnapshot.forEach(function (doc) {
         var Result =
           `<ons-col id="${doc.data().view}" style="margin-right:110px; margin-left:2px" width="20" height="250"><img class="" src="${doc.data().PosterURL}" alt="" width="170" height="240vh" ></ons-icon></ons-col>
-=======
-  var db = firebase.firestore(); 
-  
-    db.collection("DetailMovie").where("No", "<=", 1).orderBy("No")
-        .get()
-        .then(function (querySnapshot) {
-            querySnapshot.forEach(function (doc) {
-                const Result =
-                    /*html*/
-                    `<div id="${doc.data().No}">
-                            <img src="${doc.data().PosterURL}" class="" width="100%" height="90%" alt="">
-                    </div>`
-                $("#home").append(Result);
-            });
-        })
-        .catch(function (error) {
-            console.log("Error getting documents: ", error);
-        });
-        
-//ดูล่าสุด
-db.collection("DetailMovie")
-.where("view", "<=", 5)
-.orderBy("view")
-.get()
-.then(function (querySnapshot) {
-  $('#carousel').empty();
-  querySnapshot.forEach(function (doc) {
-    var Result =
-      `<ons-col id="${doc.data().view}" style="margin-right:110px; margin-left:2px" width="20" height="250"><img class="" src="${doc.data().PosterURL}" alt="" width="170" height="240vh" ></ons-icon></ons-col>
->>>>>>> 878a7e68c29ebca8e330203dfca393040e6eefe9
       `;
         $("#viewed").append(Result);
       });
@@ -143,20 +109,7 @@ db.collection("DetailMovie")
 
 
 
-  // db.collection("DetailMovie").get().then((querySnapshot) => {
-  //   querySnapshot.forEach((doc) => {
-  //     var card = `<div class="card ">
-  //      <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
-  //      <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
-  //      <p class="card-text">${doc.data().Type}</p>
-  //    </div>
-
-  //  </div>`;
-  //     $("#allcategory").append(card);
-
-  //   });
-  // });
-<<<<<<< HEAD
+  
 
   document.addEventListener('init', function (event) {
     var page = event.target;
@@ -189,146 +142,7 @@ db.collection("DetailMovie")
       })
     }
   });
-=======
-  document.addEventListener('postchange', function (event) {
-    console.log('postchange event', event);
-  });
-  function changeTab() {
-    document.getElementById('tabbar').setActiveTab(1);
-  }
-  function changeButton() {
-    document.getElementById('segment').setActiveButton(1);
-  }
-  function logIndexes() {
-    console.log('active button index', document.getElementById('segment').getActiveButtonIndex());
-    console.log('active tab index', document.getElementById('tabbar').getActiveTabIndex());
-  }
->>>>>>> 878a7e68c29ebca8e330203dfca393040e6eefe9
 
-  // db.collection("DetailMovie").where("Type", "==", "คอมเมดี้")
-  //   .get()
-  //   .then(function (querySnapshot) {
-  //     querySnapshot.forEach((doc) => {
-  //       var card1 = `<div class="card ">
-  //       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
-  //       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
-  //        <p class="card-text">${doc.data().Type}</p>
-  //     </div>
-
-  //   </div>`;
-  //       $("#comedy").append(card1);
-  //       $("#comedy1").append(card1);
-
-  //     });
-  //   })
-  //   .catch(function (error) {
-  //     console.log("Error getting documents: ", error);
-  //   });
-
-  // db.collection("DetailMovie").where("Type", "==", "แฟนตาซี")
-  //   .get()
-  //   .then(function (querySnapshot) {
-  //     querySnapshot.forEach((doc) => {
-  //       var card1 = `<div class="card ">
-  //       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
-  //       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
-  //        <p class="card-text">${doc.data().Type}</p>
-  //     </div>
-
-  //   </div>`;
-  //       $("#fantasy").append(card1);
-  //       $("#fantasy1").append(card1);
-
-  //     });
-  //   })
-  //   .catch(function (error) {
-  //     console.log("Error getting documents: ", error);
-  //   });
-
-  // db.collection("DetailMovie").where("Type", "==", "ดราม่า")
-  //   .get()
-  //   .then(function (querySnapshot) {
-  //     querySnapshot.forEach((doc) => {
-  //       var card1 = `<div class="card ">
-  //       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
-  //       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
-  //        <p class="card-text">${doc.data().Type}</p>
-  //     </div>
-
-  //   </div>`;
-  //       $("#drama").append(card1);
-  //       $("#drama1").append(card1);
-
-  //     });
-  //   })
-  //   .catch(function (error) {
-  //     console.log("Error getting documents: ", error);
-  //   });
-
-  // db.collection("DetailMovie").where("Type", "==", "สยองขวัญ")
-  //   .get()
-  //   .then(function (querySnapshot) {
-  //     querySnapshot.forEach((doc) => {
-  //       var card1 = `<div class="card ">
-  //       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
-  //       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
-  //        <p class="card-text">${doc.data().Type}</p>
-  //     </div>
-
-  //   </div>`;
-  //       $("#horror").append(card1);
-  //       $("#horror1").append(card1);
-
-  //     });
-  //   })
-  //   .catch(function (error) {
-  //     console.log("Error getting documents: ", error);
-  //   });
-
-
-  // db.collection("DetailMovie").where("Type", "==", "แอคชั่น")
-  //   .get()
-  //   .then(function (querySnapshot) {
-  //     querySnapshot.forEach((doc) => {
-  //       var card1 = `<div class="card ">
-  //       <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
-  //       <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
-  //        <p class="card-text">${doc.data().Type}</p>
-  //     </div>
-
-  //   </div>`;
-  //       $("#action").append(card1);
-  //       $("#action1").append(card1);
-
-  //     });
-  //   })
-  //   .catch(function (error) {
-  //     console.log("Error getting documents: ", error);
-  //   });
-
-<<<<<<< HEAD
-=======
-
-    
-
-
-
-
-
-})
-function setColor(btn, color){
-  var count=1;
-  var property = document.getElementById(btn);
-  if (count == 0){
-      property.style.color = "#FFFFFF"
-      count=1;        
-  }
-  else{
-      property.style.color = "#ebb617"
-      count=0;
-  }
-
-}
->>>>>>> 878a7e68c29ebca8e330203dfca393040e6eefe9
+  
 
 })
