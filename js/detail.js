@@ -56,7 +56,7 @@ $(function () {
         });
 //ดูล่าสุด
 db.collection("DetailMovie")
-.where("view", "<=", 1)
+.where("view", "<=", 5)
 .orderBy("view")
 .get()
 .then(function (querySnapshot) {
@@ -122,7 +122,19 @@ db.collection("DetailMovie")
 
   //   });
   // });
-
+  document.addEventListener('postchange', function (event) {
+    console.log('postchange event', event);
+  });
+  function changeTab() {
+    document.getElementById('tabbar').setActiveTab(1);
+  }
+  function changeButton() {
+    document.getElementById('segment').setActiveButton(1);
+  }
+  function logIndexes() {
+    console.log('active button index', document.getElementById('segment').getActiveButtonIndex());
+    console.log('active tab index', document.getElementById('tabbar').getActiveTabIndex());
+  }
 
 
   db.collection("DetailMovie").where("Type", "==", "ความรัก")
@@ -248,4 +260,17 @@ db.collection("DetailMovie")
 
 
 })
+function setColor(btn, color){
+  var count=1;
+  var property = document.getElementById(btn);
+  if (count == 0){
+      property.style.color = "#FFFFFF"
+      count=1;        
+  }
+  else{
+      property.style.color = "#7FFF00"
+      count=0;
+  }
+
+}
 
