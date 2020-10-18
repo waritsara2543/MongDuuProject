@@ -1,0 +1,23 @@
+<ons-page id="search">
+    
+    <ons-row class="d-flex align-items-center searchbar">
+        <div class="col-11">
+            <input style="border-radius: 10px; text-align: center;" type="text" class="form-control" placeholder="Search"
+                id="searchResult" onchange="getmoviefromSearch()">
+        </div>
+        <ons-icon size="30px" icon="md-search" onchange="getmoviefromSearch()"></ons-icon>
+    </ons-row>
+
+    <ons-row id="testest" class="d-flex justify-content-center">
+       <ons-carousel item-width="120px"  swipeable auto-scroll overscrollable>
+        <ons-carousel-item ><button type="button" style="margin: 2px; border-radius: 10px" class="btnSearch btn btn-light" id="ความรัก">#ความรัก</button></ons-carousel-item>
+        <ons-carousel-item ><button type="button" style="margin: 2px ;border-radius: 10px" class="btnSearch btn btn-light" id="คอมเมดี้">#ตลก</button></ons-carousel-item>
+        <ons-carousel-item ><button type="button" style="margin: 2px ;border-radius: 10px" class="btnSearch btn btn-light" id="ดราม่า">#ดราม่า</button></ons-carousel-item>
+        <ons-carousel-item ><button type="button" style="margin: 2px ;border-radius: 10px" class="btnSearch btn btn-light" id="แฟนตาซี">#จินตนาการ</button></ons-carousel-item>
+        <ons-carousel-item ><button type="button" style="margin: 2px ;border-radius: 10px" class="btnSearch btn btn-light" id="สยองขวัญ">#ผี</button></ons-carousel-item>
+        <ons-carousel-item ><button type="button" style="margin: 2px ;border-radius: 10px" class="btnSearch btn btn-light" id="แอคชั่น">#ต่อสู้</button></ons-carousel-item>
+       </ons-carousel>
+       
+    </ons-row>
+    <div id="showmovieSearch"></div>
+</ons-page>

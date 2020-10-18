@@ -56,7 +56,7 @@ $(function () {
     });
   //ดูล่าสุด
   db.collection("DetailMovie")
-    .where("view", "<=", 1)
+    .where("view", "<=",12)
     .orderBy("view")
     .get()
     .then(function (querySnapshot) {
@@ -110,7 +110,7 @@ $(function () {
 
 
   
-
+//Category
   document.addEventListener('init', function (event) {
     var page = event.target;
     if (page.id === 'category') {
@@ -143,6 +143,36 @@ $(function () {
     }
   });
 
-  
+
+  //search by Category
+document.addEventListener('init', function (event) {
+  var page = event.target;
+  if (page.id === 'search') {
+    $(".btnSearch").click(function () {
+      var id = $(this).attr('id');
+      $("#showmovieSearch").empty();
+      db.collection("DetailMovie").get().then(function (querySnapshot) {
+        querySnapshot.forEach((doc) => {
+          if(doc.data().Type === id){
+            var card2 = `<div class="card ">
+                          <img class="card-img-top" src="${doc.data().PosterURL}" alt=""> <div class="card-body">
+                          <h4 class="card-title">${doc.data().Title} - ${doc.data().Year} </h4>
+                          <p class="card-text">${doc.data().Type}</p>
+                      </div>`;
+          $("#showmovieSearch").append(card2);
+          }
+        });
+      })
+      .catch(function (error) {
+        console.log("Error getting documents: ", error);
+      });
+    })
+  }
+});
 
 })
+
+
+
+
+
