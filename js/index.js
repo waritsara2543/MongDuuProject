@@ -13,6 +13,7 @@ $(function () {
       $("#username").text(email);
       $("#displayname").text(displayName);
       $("#photo").attr("src", photoUrl);
+      
 
     } else {
       // User is signed out.
